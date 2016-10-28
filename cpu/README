@@ -1,7 +1,21 @@
 === Instructions ===
 1. Build arm gem5
-2. Build linux image for arm gem5. The source is in gem5/full-system/src/linux-arm-gem5/
+    scons build/ARM/gem5.opt
+
+2. Build linux kernel image for arm gem5.
+
+   - Kernel image:
+   git clone https://github.com/gem5/linux-arm-gem5.git
+   cd linux-arm-gem5
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- gem5_defconfig
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4
+
+   - Disk image: The disk image we used is donwloaded from
+   ARM Full-System Files - http://gem5.org/Download
+   We put the parsec benchmarks is in directory "/home/gem5/benchmarks/parsec/"
+
 3. Configure gem5 environment and parsec (introduced in next section)
+
 4. Run run_cpusim.py
 
 ** Make sure the disk has enough space because each simulation instance will generate
