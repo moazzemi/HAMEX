@@ -1,0 +1,44 @@
+=== Instructions ===
+1. Build arm gem5
+2. Build linux image for arm gem5. The source is in gem5/full-system/src/linux-arm-gem5/
+3. Configure gem5 environment and parsec (introduced in next section)
+4. Run run_cpusim.py
+
+** Make sure the disk has enough space because each simulation instance will generate
+huge amount of memory trace data though they are compressed.
+
+=== Files ===
+* Control Scripts
+- run_cpusim.py
+    Run gem5 simulation based on the configurations. A number of simulation
+    instances will be brought up according to number of CPU cores.
+
+- global_conf.py
+    Global configurations include gem5 environment, benchmark and output.
+
+- gen_gem5.py
+    Generates scripts for running gem5 instances. For each frequency
+    config, there is a corresponding set of scripts for running each
+    benchmark.
+
+- gen_rcS.py
+    Generates scripts for running parsec benchmarks in simulation
+    environment.
+
+- gem5_conf.py
+    Predefined gem5 configurations. We added configurations for simulating
+    Exynos 5422 which has two clusters of ARM Coretex A15 and A7 CPUs and
+    each cluster has shared L2 cache.
+
+- parsec_conf.py
+    Predefined parsec related configurations.
+
+* Default Output File Structure
+output/
+    rcs/
+    	scripts for running benchmarks in simuluation environment
+    run_scripts/
+    	scripts for running gem5 instances
+    cpt-[arch]_[frequency]/
+    	gem5 output for each configuration
+

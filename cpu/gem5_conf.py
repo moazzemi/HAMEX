@@ -15,6 +15,8 @@ def build_gem5(sim_type, env_gem5_bin, env_gem5_src):
         return (
         ""+env_gem5_bin+" \\\n"
         " --outdir=$2 \\\n"
+        " --debug-flags=DRAM \\\n"
+        " --debug-file=traces.out.gz \\\n"
         " "+env_gem5_src+"/configs/example/fsHT.py \\\n"
         " --script=$1 \\\n"
         )
