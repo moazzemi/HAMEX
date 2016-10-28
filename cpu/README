@@ -18,8 +18,8 @@
 
 4. Run run_cpusim.py
 
-** Make sure the disk has enough space because each simulation instance will generate
-huge amount of memory trace data though they are compressed.
+** Make sure the disk has enough space because each simulation instance will
+generate huge amount of memory trace data though they are compressed.
 
 === Files ===
 * Control Scripts
@@ -46,6 +46,13 @@ huge amount of memory trace data though they are compressed.
 
 - parsec_conf.py
     Predefined parsec related configurations.
+
+- cpt-XXX/
+    To reduce the time for simulation, we use gem5 checkpoint to skip the boot
+    process. gem5 provides a script (gem5/configs/boot/hack_back_ckpt.rcS) which
+    can help create such checkpoint. The checkpoint will continue right after linux
+    has booted and run the specified script. These folders are the checkpoints
+    we used to run benchmarks.
 
 * Default Output File Structure
 output/
